@@ -1,6 +1,8 @@
 import * as React from "react";
 
 import Player from "./player";
+import Timer from "./timer";
+
 export interface IAppProps {
     game: string;
 }
@@ -36,11 +38,15 @@ export default class App extends React.Component<IAppProps, IAppState> {
             ? null
             : this.state.result1 > this.state.result2 ? "Player 1" : "Player 2";
 
+        if (this.state.result1 == 11 || this.state.result2 == 11)
+            return (<h1>{winner} won !!!</h1>)
+
         return (
             <div>
                 <h1>{this.props.game} result:</h1>
+                <Timer round={this.state.result1 + this.state.result2 + 1}/>
                 {winner && <section>
-                    <h2>Winner {winner}</h2>
+                    <h2>Winning {winner}</h2>
                 </section>}
                 <section>
                     <Player
