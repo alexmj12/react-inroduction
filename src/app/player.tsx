@@ -1,10 +1,14 @@
 import * as React from "react";
 
-export default class Player extends React.Component<{}, {}> {
+export interface IPlayerProps{
+    name: string;
+    result: number;
+}
+export default class Player extends React.Component<IPlayerProps, {}> {
     render() {
         return (
             <section>
-                <h3>Player: 0</h3>
+                <h3>{this.props.name}: {this.props.result}</h3>
             </section>
         );
     }
