@@ -7,28 +7,20 @@
   "author": "alexmj12.1981@gmail.com",
   "license": "MIT",
   "scripts": {
-    "init": "npm install",
+    "init": "yarn install",
     "build": "webpack -d --config webpack.config.js --colors",
     "watch": "webpack -d --config webpack.config.js --watch --colors",
     "start": "webpack-dev-server"
   },
   "dependencies": {
-    "lodash": "^4.17.4",
-    "react": "^15.4.2",
-    "react-dom": "^15.4.2",
-    "react-router-dom": "^4.0.0",
-    "whatwg-fetch": "^2.0.3"
+    "react": "^15.5.4",
+    "react-dom": "^15.5.4"
   },
   "devDependencies": {
-    "@types/node": "^7.0.11",
-    "@types/react": "^15.0.18",
-    "@types/react-dom": "^0.14.23",
-    "babel-core": "6.24.0",
-    "babel-loader": "6.4.1",
-    "babel-preset-es2015": "6.24.0",
-    "babel-preset-react": "6.23.0",
-    "clean-webpack-plugin": "0.1.16",
-    "webpack": "^2.3.1",
-    "webpack-dev-server": "2.4.2"
+    "@types/react": "^15.0.24",
+    "awesome-typescript-loader": "^3.1.3",
+    "typescript": "^2.3.2",
+    "webpack": "^2.5.1",
+    "webpack-dev-server": "^2.4.5"
   }
 }
