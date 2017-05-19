@@ -1,38 +1,27 @@
 const webpack = require("webpack");
 const path = require("path");
 
-const CleanWebpackPlugin = require("clean-webpack-plugin");
+const sourcePath = path.join(__dirname,  "src", "app");
+const outputPath = path.join(__dirname, "build");
 
-const sourcePath = path.join(__dirname, "app");
-const outputPath = path.join(__dirname, "build", "js");
-
-module.exports = {
-    devtool: "eval-source-map",
+var config = {
+    context: sourcePath,
     entry: {
-        app: path.join(sourcePath, "index.js")
+        app: path.join(sourcePath, "index.tsx")
     },
     output: {
+        publicPath: "/",
         path: outputPath,
-        filename: "app.js"
+        filename: "./js/[name].js"
     },
     resolve: {
-        extensions: [".js", ".jsx"]
+        extensions: [".tsx", ".ts", ".js"]
     },
     module: {
         loaders: [
-            {
-                test: /\.js$/,
-                exclude: /node_modules/,
-                loader: 'babel-loader',
-                query: {
-                    presets: ['es2015', 'react']
-                }
-            }
+            { test: /\.tsx?$/, use: "awesome-typescript-loader" }
         ]
     },
-    plugins: [
-        new CleanWebpackPlugin(outputPath)
-    ],
     devServer: {
         publicPath: "/",
         contentBase: path.join(__dirname, "build"),
@@ -41,3 +30,5 @@ module.exports = {
         historyApiFallback: true
     }
 };
+
+module.exports = config;
