@@ -9,7 +9,7 @@ import App from "./app";
 useStrict(true);
 
 const stores = {
-    [APP_STORE]: new AppStore()
+    [APP_STORE]: AppStore.create({})
 };
 
 render(

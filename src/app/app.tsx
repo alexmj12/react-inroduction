@@ -1,7 +1,7 @@
 import * as React from "react";
 import { inject, observer } from "mobx-react";
 
-import AppStore, { APP_STORE } from "./stores/appStore";
+import AppStore, { APP_STORE, IAppStore } from "./stores/appStore";
 
 import Player from "./player";
 import Timer from "./timer";
@@ -9,20 +9,20 @@ import Timer from "./timer";
 @inject(APP_STORE)
 @observer
 export default class App extends React.Component<{}, {}> {
-    private readonly appStore: AppStore;
+    private readonly appStore: IAppStore;
 
     constructor(props: {}, context: any) {
         super(props, context);
 
-        this.appStore = this.props[APP_STORE]  as AppStore;
+        this.appStore = this.props[APP_STORE] as IAppStore;
     }
 
     render() {
         return (
             <div>
-                <h1>{this.appStore.title} result:</h1>
+                <h1>{this.appStore.title}:</h1>
 
-                <Timer round={this.appStore.round}/>
+                <Timer round={this.appStore.game.round}/>
 
                 {this.appStore.winner &&
                  <section>
@@ -31,19 +31,19 @@ export default class App extends React.Component<{}, {}> {
 
                 <section>
                     <Player
-                        name="Player 1"
-                        result={this.appStore.player1}
-                        onWin={this.appStore.onPlayer1Win}
-                        onLoose={this.appStore.onPlayer1Loose}
+                        name={this.appStore.player1.name}
+                        result={this.appStore.player1.result}
+                        onWin={() => this.appStore.player1.onWin()}
+                        onLoose={() => this.appStore.player1.onLoose()}
                     />
                 </section>
 
                 <section>
                     <Player
-                        name="Player 2"
-                        result={this.appStore.player2}
-                        onWin={this.appStore.onPlayer2Win}
-                        onLoose={this.appStore.onPlayer2Loose}
+                        name={this.appStore.player2.name}
+                        result={this.appStore.player2.result}
+                        onWin={() => this.appStore.player2.onWin()}
+                        onLoose={() => this.appStore.player2.onLoose()}
                     />
                 </section>
                 

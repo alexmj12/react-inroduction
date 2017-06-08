@@ -1352,6 +1352,10 @@ mobx-react@^4.2.1:
   dependencies:
     hoist-non-react-statics "^1.2.0"
 
+mobx-state-tree@^0.6.3:
+  version "0.6.3"
+  resolved "https://registry.yarnpkg.com/mobx-state-tree/-/mobx-state-tree-0.6.3.tgz#07cd7d418dd62a7f5aba4c0711cfcc854dde15d2"
+
 mobx@^3.1.11:
   version "3.1.11"
   resolved "https://registry.yarnpkg.com/mobx/-/mobx-3.1.11.tgz#400b1e3c00a4249dfe36e9bca28ef36f057d4a28"
