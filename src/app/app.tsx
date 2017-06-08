@@ -7,6 +7,7 @@ import Player from "./player";
 import Timer from "./timer";
 
 @inject(APP_STORE)
+@observer
 export default class App extends React.Component<{}, {}> {
     private readonly appStore: AppStore;
 
@@ -31,18 +32,18 @@ export default class App extends React.Component<{}, {}> {
                 <section>
                     <Player
                         name="Player 1"
-                        result={0}
-                        onWin={() => { }}
-                        onLoose={() => { }}
+                        result={this.appStore.player1}
+                        onWin={this.appStore.onPlayer1Win}
+                        onLoose={this.appStore.onPlayer1Loose}
                     />
                 </section>
 
                 <section>
                     <Player
                         name="Player 2"
-                        result={0}
-                        onWin={() => { }}
-                        onLoose={() => { }}
+                        result={this.appStore.player2}
+                        onWin={this.appStore.onPlayer2Win}
+                        onLoose={this.appStore.onPlayer2Loose}
                     />
                 </section>
                 
