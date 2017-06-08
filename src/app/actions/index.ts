@@ -1,0 +1,4 @@
+export const PLAYER1_WON = 'PLAYER1_WON';
+export const PLAYER1_LOOSE = 'PLAYER1_LOOSE';
+export const PLAYER2_WON = 'PLAYER2_WON';
+export const PLAYER2_LOOSE = 'PLAYER2_LOOSE'
