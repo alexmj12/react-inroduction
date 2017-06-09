@@ -1,5 +1,6 @@
 import * as React from "react";
 import { inject, observer } from "mobx-react";
+import {List, ListItem} from 'material-ui/List';
 
 import AppStore, { APP_STORE, IAppStore } from "./stores/appStore";
 
@@ -26,26 +27,28 @@ export default class App extends React.Component<{}, {}> {
 
                 {this.appStore.winner &&
                  <section>
-                    <h2>Winning {this.appStore.winner}</h2>
+                    <h2>{this.appStore.winner}</h2>
                 </section>}
 
-                <section>
+                <List>
+                <ListItem>
                     <Player
                         name={this.appStore.player1.name}
                         result={this.appStore.player1.result}
                         onWin={() => this.appStore.player1.onWin()}
                         onLoose={() => this.appStore.player1.onLoose()}
                     />
-                </section>
+                </ListItem>
 
-                <section>
+                <ListItem>
                     <Player
                         name={this.appStore.player2.name}
                         result={this.appStore.player2.result}
                         onWin={() => this.appStore.player2.onWin()}
                         onLoose={() => this.appStore.player2.onLoose()}
                     />
-                </section>
+                </ListItem>
+                </List>
                 
                 <section>
                     {this.props.children}

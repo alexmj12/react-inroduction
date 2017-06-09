@@ -29,8 +29,8 @@ const AppStore = types.model(APP_STORE,
             const store = (<IAppStore>this);
 
             return store.player1.result == store.player2.result
-                ? null
-                : store.player1.result == store.player2.result ? store.player1.name : store.player2.name;
+                ? "No winner"
+                : "Winner " + (store.player1.result == store.player2.result ? store.player1.name : store.player2.name);
         }
     },
     {
