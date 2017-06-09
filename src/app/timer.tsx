@@ -38,7 +38,7 @@ export default class Timer extends React.Component<ITimerProps, ITimerState> {
     }
     render() {
         return (
-            <h2>Round {this.props.round}. Total time: {Math.floor((this.state.now.getTime() - this.start.getTime()) / 1000)} seconds</h2>
+            <h4>Round {this.props.round}. Total time: {Math.floor((this.state.now.getTime() - this.start.getTime()) / 1000)} seconds</h4>
         );
     }
 }

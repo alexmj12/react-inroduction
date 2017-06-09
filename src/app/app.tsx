@@ -20,13 +20,13 @@ export default class App extends React.Component<{}, {}> {
     render() {
         return (
             <div>
-                <h1>{this.appStore.title}:</h1>
+                <h3>{this.appStore.title}:</h3>
 
                 <Timer round={this.appStore.game.round}/>
 
                 {this.appStore.winner &&
                  <section>
-                    <h2>Winning {this.appStore.winner}</h2>
+                    <h4>Winning {this.appStore.winner}</h4>
                 </section>}
 
                 <section>
