@@ -6,7 +6,6 @@ import PlayerStore, { IPlayer } from "./playerStore";
 export const APP_STORE = "APP_STORE";
 
 export interface IAppStore {
-    title: string;
     winner: string;
     game: IGame,
     player1: IPlayer,
@@ -19,18 +18,12 @@ const AppStore = types.model(APP_STORE,
         player1: types.optional(PlayerStore, { name: "Player 1", result: 0 }),
         player2: types.optional(PlayerStore, { name: "Player 2", result: 0 }),
 
-        get title() {
-            const store = (<IAppStore>this);
-
-            return `${store.player1.name} VS ${store.player2.name}`;
-        },
-
         get winner() {
             const store = (<IAppStore>this);
 
             return store.player1.result == store.player2.result
-                ? "No winner"
-                : "Winner " + (store.player1.result == store.player2.result ? store.player1.name : store.player2.name);
+                ? ""
+                : store.player1.result > store.player2.result ? store.player1.name : store.player2.name;
         }
     },
     {

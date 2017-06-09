@@ -5,6 +5,7 @@ export interface IPlayer {
     parent: IAppStore;
     name: string;
     result: number;
+    isWinning: boolean;
 
     onWin: () => any;
     onLoose: () => any;
@@ -16,6 +17,10 @@ const Player = types.model("Player",
         result: types.number,
         get parent(){
             return getParent(this);
+        },
+        get isWinning() {
+            const store = <IPlayer>this;
+            return store.parent.winner == store.name;
         }
     },
     {

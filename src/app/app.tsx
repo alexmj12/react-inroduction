@@ -1,9 +1,10 @@
 import * as React from "react";
 import { inject, observer } from "mobx-react";
-import {List, ListItem} from 'material-ui/List';
+import { List, ListItem } from 'material-ui/List';
 
 import AppStore, { APP_STORE, IAppStore } from "./stores/appStore";
 
+import PlayerName from "./playerName";
 import Player from "./player";
 import Timer from "./timer";
 
@@ -21,35 +22,32 @@ export default class App extends React.Component<{}, {}> {
     render() {
         return (
             <div>
-                <h1>{this.appStore.title}:</h1>
+                <h1><PlayerName name={this.appStore.player1.name} winner={this.appStore.player1.isWinning} /> VS <PlayerName name={this.appStore.player2.name} winner={this.appStore.player2.isWinning} /></h1>
 
-                <Timer round={this.appStore.game.round}/>
-
-                {this.appStore.winner &&
-                 <section>
-                    <h2>{this.appStore.winner}</h2>
-                </section>}
+                <Timer round={this.appStore.game.round} />
 
                 <List>
-                <ListItem>
-                    <Player
-                        name={this.appStore.player1.name}
-                        result={this.appStore.player1.result}
-                        onWin={() => this.appStore.player1.onWin()}
-                        onLoose={() => this.appStore.player1.onLoose()}
-                    />
-                </ListItem>
+                    <ListItem>
+                        <Player
+                            winner={true}
+                            name={this.appStore.player1.name}
+                            result={this.appStore.player1.result}
+                            onWin={() => this.appStore.player1.onWin()}
+                            onLoose={() => this.appStore.player1.onLoose()}
+                        />
+                    </ListItem>
 
-                <ListItem>
-                    <Player
-                        name={this.appStore.player2.name}
-                        result={this.appStore.player2.result}
-                        onWin={() => this.appStore.player2.onWin()}
-                        onLoose={() => this.appStore.player2.onLoose()}
-                    />
-                </ListItem>
+                    <ListItem>
+                        <Player
+                            winner={false}
+                            name={this.appStore.player2.name}
+                            result={this.appStore.player2.result}
+                            onWin={() => this.appStore.player2.onWin()}
+                            onLoose={() => this.appStore.player2.onLoose()}
+                        />
+                    </ListItem>
                 </List>
-                
+
                 <section>
                     {this.props.children}
                 </section>
